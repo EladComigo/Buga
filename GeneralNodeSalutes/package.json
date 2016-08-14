@@ -1,0 +1,15 @@
+{
+  "name": "GeneralNodeSalutes",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+	"bluebird" : ">=3.4.1"
+  },
+  "devDependencies": {
+	"chai": ">=3.5.0",
+	"mocha": ">=3.0.2",
+	"nodeunit": ">=0.9.1"
+  }
+
+
+}
