@@ -1,0 +1,120 @@
+{
+           "programs": [
+
+],
+           "streams": [
+           {
+                      "index": 0,
+                      "codec_name": "aac",
+                      "codec_long_name": "AAC (Advanced Audio Coding)",
+                      "profile": "LC",
+                      "codec_type": "audio",
+                      "codec_time_base": "1/44100",
+                      "codec_tag_string": "mp4a",
+                      "codec_tag": "0x6134706d",
+                      "sample_fmt": "fltp",
+                      "sample_rate": "44100",
+                      "channels": 2,
+                      "channel_layout": "stereo",
+                      "bits_per_sample": 0,
+                      "r_frame_rate": "0/0",
+                      "avg_frame_rate": "0/0",
+                      "time_base": "1/44100",
+                      "start_pts": 0,
+                      "start_time": "0.000000",
+                      "duration_ts": 648192,
+                      "duration": "14.698231",
+                      "bit_rate": "125571",
+                      "nb_frames": "633",
+                      "extradata": "\n00000000: 1210                                     ..\n",
+                      "disposition": {
+                                 "default": 1,
+                                 "dub": 0,
+                                 "original": 0,
+                                 "comment": 0,
+                                 "lyrics": 0,
+                                 "karaoke": 0,
+                                 "forced": 0,
+                                 "hearing_impaired": 0,
+                                 "visual_impaired": 0,
+                                 "clean_effects": 0,
+                                 "attached_pic": 0
+                      },
+                      "tags": {
+                                 "creation_time": "2008-07-09 20:10:05",
+                                 "language": "und",
+                                 "handler_name": "(C) 2007 Google Inc. v06.24.2007."
+                      }
+           },
+           {
+                      "index": 1,
+                      "codec_name": "h264",
+                      "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+                      "profile": "Main",
+                      "codec_type": "video",
+                      "codec_time_base": "125/5994",
+                      "codec_tag_string": "avc1",
+                      "codec_tag": "0x31637661",
+                      "width": 1280,
+                      "height": 720,
+                      "coded_width": 1280,
+                      "coded_height": 720,
+                      "has_b_frames": 1,
+                      "sample_aspect_ratio": "1:1",
+                      "display_aspect_ratio": "16:9",
+                      "pix_fmt": "yuv420p",
+                      "level": 51,
+                      "chroma_location": "left",
+                      "refs": 4,
+                      "is_avc": "1",
+                      "nal_length_size": "2",
+                      "r_frame_rate": "24000/1001",
+                      "avg_frame_rate": "24000/1001",
+                      "time_base": "1/24000",
+                      "start_pts": 1001,
+                      "start_time": "0.041708",
+                      "duration_ts": 352352,
+                      "duration": "14.681333",
+                      "bit_rate": "1942002",
+                      "bits_per_raw_sample": "8",
+                      "nb_frames": "352",
+                      "extradata": "\n00000000: 014d 4033 fde1 0018 674d 4033 9252 80a0  .M@3....gM@3.R..\n00000010: 0b76 0220 0000 0fa0 0002 ed51 e306 22c0  .v. .......Q..\".\n00000020: 0100 0468 cebc 80                        ...h...\n",
+                      "disposition": {
+                                 "default": 1,
+                                 "dub": 0,
+                                 "original": 0,
+                                 "comment": 0,
+                                 "lyrics": 0,
+                                 "karaoke": 0,
+                                 "forced": 0,
+                                 "hearing_impaired": 0,
+                                 "visual_impaired": 0,
+                                 "clean_effects": 0,
+                                 "attached_pic": 0
+                      },
+                      "tags": {
+                                 "creation_time": "2008-07-09 20:10:05",
+                                 "language": "und",
+                                 "handler_name": "(C) 2007 Google Inc. v06.24.2007."
+                      }
+           }
+],
+           "format": {
+           "filename": "/opt/kaltura/shared/ad_download/bb/bd/bbbd1f0f781b6d0f10c353dc949cd6b9",
+                      "nb_streams": 2,
+                      "nb_programs": 0,
+                      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+                      "format_long_name": "QuickTime / MOV",
+                      "start_time": "0.000000",
+                      "duration": "14.696667",
+                      "size": "3801016",
+                      "bit_rate": "2069049",
+                      "probe_score": 100,
+                      "tags": {
+                      "major_brand": "mp42",
+                                 "minor_version": "0",
+                                 "compatible_brands": "isomavc1mp42",
+                                 "creation_time": "2008-07-09 20:10:05"
+           }
+}
+}
