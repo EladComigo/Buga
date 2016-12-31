@@ -1,0 +1,71 @@
+<title>Hackathon 2017</title>
+
+<head>
+<link rel="icon" href="http://vignette2.wikia.nocookie.net/inanimateinsanity/images/1/17/TrophyIdle.png/revision/latest?cb=20130404083458" type=
+"image/x-icon">
+</head>
+
+
+<body>
+
+<!-- Kaltura Player embed code with all information -->
+<div id='player1'>
+<script src=
+"http://cdnapi.kaltura.com/p/2233551/sp/223355100/embedIframeJs/uiconf_id/37797122/partner_id/2233551?autoembed=true&entry_id=1_mypf7qeb&playerId=kalt
+ura_player_1483198434&cache_st=1483198434&width=560&height=395&flashvars[streamerType]=auto&flashvars[externalInterfaceDisabled]=false"></script>
+</div>
+<!-- used for demo purposes -->
+<img id="myImage" src="pic_bulboff.gif" style="width:100px">
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script src="algo.js"></script>
+<script src="voiceCommands.js"></script>
+
+<!-- making sure that the JS lib is ready -->
+<script>
+
+/*var jsCallbackReady = function( playerId ) {
+            myPlayer = document.getElementById(playerId);
+            myPlayer.addJsListener("cuePointReached", "cuePointHandler");
+        };*/
+		
+function jsCallbackReady(objectId) {
+    window.kdp = document.getElementById(objectId);
+	document.getElementById('myImage').src='pic_bulbon.gif';
+	window.kdp.kBind("cuePointReached", function(){
+		// data = the player's progress time in seconds
+		// id = the ID of the player that fired the notification
+		//window.kdp.sendNotification("doPause");
+		var div = document.getElementById('log');
+		div.innerHTML = div.innerHTML + 'Cue point reached ';
+	});
+	window.kdp.kBind("adOpportunity", function(){
+		//window.kdp.sendNotification("doPause");
+		var div = document.getElementById('log');
+		div.innerHTML = div.innerHTML + 'ad opportunity';
+	});
+	window.kdp.kBind("adEnd", function(){
+		// data = the player's progress time in seconds
+		// id = the ID of the player that fired the notification
+		var div = document.getElementById('log');
+		div.innerHTML = div.innerHTML + 'ad end';
+	});
+}  
+
+</script>
+
+
+
+<!-- get all kaltura API information --> 
+<script>
+
+
+
+</script>
+<!-- var entry_id='1_mypf7qeb';
+var partner_id=2233551;
+var ks =  'NjlmNDE5ODVkYjdhYmRlYzFhZTAyOWJkMDM2OWUwYjIwMjc4Y2VjYnwyMjMzNTUxOzIyMzM1NTE7MTQ4MzI4NjIzOTsyOzE0ODMxOTk4MzkuNjQzMTthZG1pbjtkaXNhYmxlZW50aXRsZW1lbnQ7Ow==';
+-->
+<div id='log'>
+
+</div>
+</body>
