@@ -1,56 +1,46 @@
-<title>Hackathon 2017</title>
+<html>
 
 <head>
-<link rel="icon" href="http://vignette2.wikia.nocookie.net/inanimateinsanity/images/1/17/TrophyIdle.png/revision/latest?cb=20130404083458" type=
-"image/x-icon">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title>Hackathon 2017</title>
 </head>
 
 
 <body>
 
-<!-- Kaltura Player embed code with all information -->
-<div id='player1'>
-<script src=
-"http://cdnapi.kaltura.com/p/2233551/sp/223355100/embedIframeJs/uiconf_id/37797122/partner_id/2233551?autoembed=true&entry_id=1_mypf7qeb&playerId=kalt
-ura_player_1483198434&cache_st=1483198434&width=560&height=395&flashvars[streamerType]=auto&flashvars[externalInterfaceDisabled]=false"></script>
-</div>
-<!-- used for demo purposes -->
-<img id="myImage" src="pic_bulboff.gif" style="width:100px">
-<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-<script src="algo.js"></script>
-<script src="voiceCommands.js"></script>
-
-<!-- making sure that the JS lib is ready -->
+<script src="http://cdnapi.kaltura.com/p/2233551/sp/223355100/embedIframeJs/uiconf_id/37797122/partner_id/2233551"></script>
+<div id="kaltura_player_1483277931" style="width: 560px; height: 395px;"></div>
 <script>
+	kWidget.embed({
+		"targetId": "kaltura_player_1483277931",
+		"wid": "_2233551",
+		"uiconf_id": 37797122,
+		"readyCallback": function(playerId){
+			var kdp = document.getElementById(playerId);
+			kdp.kBind("adOpportunity", function(cuePoint){
+				this.sendNotification("doPause");
+				var src;
+				switch (cuePoint.cuePoint.title){
+					case "Point1":
+						src = 'images/video.png';
+						break;
+				}
+				var img = $("<img src=" + src + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
+						.on('click', function(e){
+							$(this).remove();
+							kdp.sendNotification("doPlay");
+						});
 
-/*var jsCallbackReady = function( playerId ) {
-            myPlayer = document.getElementById(playerId);
-            myPlayer.addJsListener("cuePointReached", "cuePointHandler");
-        };*/
-		
-function jsCallbackReady(objectId) {
-	window.kdp = document.getElementById(objectId);
-	fillCuePoints(window.kdp);
-    
-	document.getElementById('myImage').src='pic_bulbon.gif';
-	bindKdpToEvenets(window.kdp, document.getElementById('log'));
-}  
-
+				$(this).append(img);
+			});
+		},
+		"flashvars": {
+			"streamerType": "auto"
+		},
+		"cache_st": 1483277931,
+		"entry_id": "1_mypf7qeb"
+	});
 </script>
 
-
-
-<!-- get all kaltura API information --> 
-<script>
-
-
-
-</script>
-<!-- var entry_id='1_mypf7qeb';
-var partner_id=2233551;
-var ks =  'NjlmNDE5ODVkYjdhYmRlYzFhZTAyOWJkMDM2OWUwYjIwMjc4Y2VjYnwyMjMzNTUxOzIyMzM1NTE7MTQ4MzI4NjIzOTsyOzE0ODMxOTk4MzkuNjQzMTthZG1pbjtkaXNhYmxlZW50aXRsZW1lbnQ7Ow==';
--->
-<div id='log'>
-
-</div>
 </body>
+</html>
