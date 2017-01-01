@@ -25,7 +25,9 @@ if (annyang) {
     }
     function repeatLastSection()
     {
-
+        setVoiceDivText("repeat");
+        kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
+        kdp.sendNotification("doPlay");
     }
 
 
