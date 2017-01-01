@@ -25,9 +25,7 @@ function bindKdpToEvenets(kdp, div)
         }
     });
 
-    kdp.kBind("adEnd", function(){
-        div.innerHTML = div.innerHTML + 'XXXXX ad end' +  "<br />";
-    });
+
 
     kdp.kBind("adOpportunity", function(cuePoint){
         //this.sendNotification("doPause");
@@ -57,8 +55,8 @@ function bindKdpToEvenets(kdp, div)
         for (item in _cuepoints) {
             for (innerItem in  _cuepoints[item]) {
                 var end_time = _cuepoints[item][innerItem].endTime;
-               // div.innerHTML = div.innerHTML + "xxx" + roundTime + "/" +  end_time +  "<br />";
-                if (roundTime - 30  >= end_time  &&   roundTime + 30 <= end_time) {
+                //div.innerHTML = div.innerHTML + "xxx " + roundTime + "/" +  end_time +  "<br />";
+                if (Math.abs(roundTime - end_time) <= 30) {
                     div.innerHTML = div.innerHTML + 'CuePointEnded = ' + roundTime + "/" + end_time  +  "<br />";
                     this.sendNotification("doPause");
                     break;
