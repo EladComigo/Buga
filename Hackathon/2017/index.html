@@ -29,26 +29,11 @@ ura_player_1483198434&cache_st=1483198434&width=560&height=395&flashvars[streame
         };*/
 		
 function jsCallbackReady(objectId) {
-    window.kdp = document.getElementById(objectId);
+	window.kdp = document.getElementById(objectId);
+	fillCuePoints(window.kdp);
+    
 	document.getElementById('myImage').src='pic_bulbon.gif';
-	window.kdp.kBind("cuePointReached", function(){
-		// data = the player's progress time in seconds
-		// id = the ID of the player that fired the notification
-		//window.kdp.sendNotification("doPause");
-		var div = document.getElementById('log');
-		div.innerHTML = div.innerHTML + 'Cue point reached ';
-	});
-	window.kdp.kBind("adOpportunity", function(){
-		//window.kdp.sendNotification("doPause");
-		var div = document.getElementById('log');
-		div.innerHTML = div.innerHTML + 'ad opportunity';
-	});
-	window.kdp.kBind("adEnd", function(){
-		// data = the player's progress time in seconds
-		// id = the ID of the player that fired the notification
-		var div = document.getElementById('log');
-		div.innerHTML = div.innerHTML + 'ad end';
-	});
+	bindKdpToEvenets(window.kdp, document.getElementById('log'));
 }  
 
 </script>
