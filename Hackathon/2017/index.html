@@ -21,7 +21,9 @@
 		"wid": "_2233551",
 		"uiconf_id": 37797122,
 		"readyCallback": function(playerId){
+
 			var kdp = document.getElementById(playerId);
+			bindKdpToEvenets(kdp, document.getElementById('log'));
 			kdp.kBind("adOpportunity", function(cuePoint){
 				this.sendNotification("doPause");
 				var src;

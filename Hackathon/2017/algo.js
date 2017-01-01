@@ -31,7 +31,7 @@ function bindKdpToEvenets(kdp, div)
 		var timeMiliSec  = currentTime * 1000;
 		var roundTime = Math.round(timeMiliSec);
 		var item, innerItem;
-
+	
 		for (item in _cuepoints) {
 
 			for (innerItem in  _cuepoints[item]) {
