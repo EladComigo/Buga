@@ -9,12 +9,12 @@ function fillCuePoints(kdp)
 function bindKdpToEvenets(kdp, div)
 {
 	kdp.kBind("cuePointReached", function(){
-		div.innerHTML = div.innerHTML + 'Cue point reached ';
+		div.innerHTML = div.innerHTML + 'Cue point reached' +  "<br />";
 	});
 	kdp.kBind("adOpportunity", function(){
-		div.innerHTML = div.innerHTML + 'ad opportunity';
+		div.innerHTML = div.innerHTML + 'ad opportunity' +  "<br />";
 	});
 	kdp.kBind("adEnd", function(){
-		div.innerHTML = div.innerHTML + 'ad end';
+		div.innerHTML = div.innerHTML + 'ad end' +  "<br />";
 	});
 }
