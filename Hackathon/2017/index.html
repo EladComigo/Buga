@@ -25,25 +25,11 @@
 		"uiconf_id": 37797122,
 		"readyCallback": function(playerId){
 			var kdp = document.getElementById(playerId);
-			kdp.kBind("adOpportunity", function(cuePoint){
-				this.sendNotification("doPause");
-				var src;
-				switch (cuePoint.cuePoint.title){
-					case "Point1":
-						src = 'images/video.png';
-						break;
-				}
-				var img = $("<img src=" + src + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
-						.on('click', function(e){
-							$(this).remove();
-							kdp.sendNotification("doPlay");
-						});
-
-				$(this).append(img);
-			});
+			bindKdpToEvenets(kdp, document.getElementById('log'));
 		},
 		"flashvars": {
-			"streamerType": "auto"
+			"streamerType": "auto",
+			"EmbedPlayer.MonitorRate": 25
 		},
 		"cache_st": 1483277931,
 		"entry_id": "1_mypf7qeb"
