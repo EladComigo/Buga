@@ -28,23 +28,10 @@ function bindKdpToEvenets(kdp, div)
 
 
     kdp.kBind("adOpportunity", function(cuePoint){
-        //this.sendNotification("doPause");
         seekToStart = cuePoint.cuePoint.startTime;
         seekToEnd = cuePoint.cuePoint.endTime;
         div.innerHTML = div.innerHTML + 'adOpportunity currentTime ' +  cuePoint.cuePoint.startTime +  "<br />";
-        //var src;
-        //switch (cuePoint.cuePoint.title){
-        //    case "Point1":
-        //        src = 'images/video.png';
-        //        break;
-        //}
-        //var img = $("<img src=" + src + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
-        //    .on('click', function(e){
-        //        $(this).remove();
-        //        kdp.sendNotification("doPlay");
-        //    });
 
-        //$(this).append(img);
     });
 
     kdp.kBind('playerUpdatePlayhead', function( currentTime ){
@@ -54,16 +41,37 @@ function bindKdpToEvenets(kdp, div)
 
         for (item in _cuepoints) {
             for (innerItem in  _cuepoints[item]) {
+				var start_time = _cuepoints[item][innerItem].startTime;
                 var end_time = _cuepoints[item][innerItem].endTime;
-                //div.innerHTML = div.innerHTML + "xxx " + roundTime + "/" +  end_time +  "<br />";
-                if (Math.abs(roundTime - end_time) <= 30) {
+				//div.innerHTML = div.innerHTML + "xxx " + roundTime + "/" +  end_time +  "<br />";
+
+				if (Math.abs(roundTime - end_time) <= 30 || Math.abs(roundTime - start_time) <= 30) {
                     div.innerHTML = div.innerHTML + 'CuePointEnded = ' + roundTime + "/" + end_time  +  "<br />";
                     this.sendNotification("doPause");
+
+					var src;
+					switch (_cuepoints[item][innerItem].title){
+						case "Point1":
+							src = 'images/video.png';
+							break;
+						case "Point2":
+							src = 'images/video.png';
+							break;
+					}
+					var img = $("<img src=" + src + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
+						.on('click', function(e){
+							$(this).remove();
+							kdp.sendNotification("doPlay");
+						});
+
+					$(this).append(img);
                     break;
                 }
 
             }
         }
+
+
 
         //div.innerHTML = div.innerHTML + 'playerUpdatePlayhead ' + roundTime  +  "<br />";
 
