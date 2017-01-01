@@ -67,7 +67,6 @@ function bindKdpToEvenets(kdp, div)
 					$(this).append(img);
                     break;
                 }
-
             }
         }
 
