@@ -48,6 +48,8 @@ if (annyang) {
         'back to the start': stopTheVideo,
         'go to start': stopTheVideo,
         'back to top': stopTheVideo,
+        /** repeat **/
+        'repeat': repeatLastSection
     };
 
     // Add our commands to annyang
