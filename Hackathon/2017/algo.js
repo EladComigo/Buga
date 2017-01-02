@@ -12,7 +12,7 @@ function bindKdpToEvenets(kdp, div)
 
     kdp.kBind('cuePointsReceived', function ( event, cuePoints ) {
         _cuepoints = kdp.evaluate('{mediaProxy.entryCuePoints}');
-        div.innerHTML = div.innerHTML + 'cuePointsReceived ' +  "<br />";
+
         for (item in _cuepoints) {
             for (innerItem in  _cuepoints[item]) {
                 //div.innerHTML = div.innerHTML + 'updatedAt ' +  _cuepoints[item][innerItem].updatedAt +  "<br />";
@@ -21,6 +21,8 @@ function bindKdpToEvenets(kdp, div)
                 div.innerHTML = div.innerHTML + 'cuePointsReceived startTime ' +  _cuepoints[item][innerItem].startTime +  "<br />";
                 div.innerHTML = div.innerHTML + 'cuePointsReceived endTime ' +  _cuepoints[item][innerItem].endTime +  "<br />";
                 div.innerHTML = div.innerHTML + 'cuePointsReceived duration ' +  _cuepoints[item][innerItem].duration +  "<br />";
+                div.innerHTML = div.innerHTML + '------------------------------- '  +  "<br />";
+
             }
         }
     });
@@ -30,7 +32,10 @@ function bindKdpToEvenets(kdp, div)
     kdp.kBind("adOpportunity", function(cuePoint){
         seekToStart = cuePoint.cuePoint.startTime;
         seekToEnd = cuePoint.cuePoint.endTime;
-        div.innerHTML = div.innerHTML + 'adOpportunity currentTime ' +  cuePoint.cuePoint.startTime +  "<br />";
+
+        div.innerHTML = div.innerHTML + 'adOpportunity start time '  +  cuePoint.cuePoint.startTime +   "<br />";
+        div.innerHTML = div.innerHTML + 'adOpportunity end time '    + cuePoint.cuePoint.endTime +   "<br />";
+
 
     });
 
@@ -45,16 +50,25 @@ function bindKdpToEvenets(kdp, div)
                 var end_time = _cuepoints[item][innerItem].endTime;
 				//div.innerHTML = div.innerHTML + "xxx " + roundTime + "/" +  end_time +  "<br />";
 
-				if (Math.abs(roundTime - end_time) <= 30 || Math.abs(roundTime - start_time) <= 30) {
-                    div.innerHTML = div.innerHTML + 'CuePointEnded = ' + roundTime + "/" + end_time  +  "<br />";
+				if (Math.abs(roundTime - end_time) <= 30) {
+                    div.innerHTML = div.innerHTML + 'CuePointEnded = ' + _cuepoints[item][innerItem].title + " - " + roundTime + "/" + end_time  +  "<br />";
                     this.sendNotification("doPause");
-
+					//div.innerHTML = div.innerHTML + 'Starting  = ' + _cuepoints[item][innerItem].title  +  "<br />";
 					var src;
 					switch (_cuepoints[item][innerItem].title){
-						case "Point1":
+						case "Step1":
 							src = 'images/video.png';
 							break;
-						case "Point2":
+						case "Step2":
+							src = 'images/video.png';
+							break;
+						case "Step3":
+							src = 'images/video.png';
+							break;
+						case "Step4":
+							src = 'images/video.png';
+							break;
+						case "Step5":
 							src = 'images/video.png';
 							break;
 					}
