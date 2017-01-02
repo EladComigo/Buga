@@ -39,7 +39,7 @@ function bindKdpToEvenets(kdp, div)
 
     });
 
-    kdp.kBind('playerUpdatePlayhead1', function( currentTime ){
+    kdp.kBind('playerUpdatePlayhead', function( currentTime ){
         var timeMiliSec  = currentTime * 1000;
         var roundTime = Math.round(timeMiliSec);
         var item, innerItem;
@@ -55,7 +55,7 @@ function bindKdpToEvenets(kdp, div)
                     this.sendNotification("doPause");
 					var src = _cuepoints[item][innerItem].sourceUrl;
                     
-                    var img = $("<img  src=" + src +  " id=step_img" + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
+                    var img = $("<img  src=" + src + " id=step_img" + " style='position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: 10000000000; cursor: pointer; display: inline-block; '>")
 						.on('click', function(e){
 							$(this).remove();
 							kdp.sendNotification("doPlay");
