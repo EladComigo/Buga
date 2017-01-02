@@ -36,4 +36,5 @@
 }
 .menu li:hover {
     background-color: #0099cc;
+    cursor: pointer;
 }

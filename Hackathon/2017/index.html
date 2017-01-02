@@ -8,6 +8,7 @@
         var seekToStart = 0;
         var seekToEnd = 0;
         var currentSpeed = 1;
+        var seekViaChapter = false;
         var cuepoints = [];
         function nextSpeed(up)
         {
@@ -63,7 +64,7 @@
 		"uiconf_id": 37797122,
 		"readyCallback": function(playerId){
 			kdp = document.getElementById(playerId);
-			bindKdpToEvenets(kdp, document.getElementById('log'));
+			bindKdpToEvenets(kdp, document.getElementById('chapters'), document.getElementById('log'));
 		},
 		"flashvars": {
 			"streamerType": "auto",
