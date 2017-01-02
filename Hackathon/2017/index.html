@@ -8,6 +8,7 @@
         var seekToStart = 0;
         var seekToEnd = 0;
         var currentSpeed = 1;
+        var cuepoints = [];
         function nextSpeed(up)
         {
             if (up)
@@ -22,7 +23,6 @@
                     return 0.125;
                 return currentSpeed / 2;
             }
-
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -43,12 +43,8 @@
 </div>
 
 <script src="http://cdnapi.kaltura.com/p/2233551/sp/223355100/embedIframeJs/uiconf_id/37797122/partner_id/2233551"></script>
-<div class="column menu">
+<div id="chapters" class="column menu">
     <ul>
-        <li>The Flight</li>
-        <li>The City</li>
-        <li>The Island</li>
-        <li>The Food</li>
     </ul>
 </div>
 

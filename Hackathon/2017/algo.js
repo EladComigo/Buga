@@ -1,29 +1,17 @@
-var _cuepoints;
-
-function fillCuePoints(kdp)
-{
-    _cuepoints = kdp.evaluate('{mediaProxy.entryCuePoints}');
-
-}
-
-// kdp.sendNotification("doPause")
 function bindKdpToEvenets(kdp, div)
 {
 
-    kdp.kBind('cuePointsReceived', function ( event, cuePoints ) {
-        _cuepoints = kdp.evaluate('{mediaProxy.entryCuePoints}');
-
-        for (item in _cuepoints) {
-            for (innerItem in  _cuepoints[item]) {
-                //div.innerHTML = div.innerHTML + 'updatedAt ' +  _cuepoints[item][innerItem].updatedAt +  "<br />";
-                //div.innerHTML = div.innerHTML + 'cuePointType ' +  _cuepoints[item][innerItem].cuePointType +  "<br />";
-                div.innerHTML = div.innerHTML + 'cuePointsReceived title ' +  _cuepoints[item][innerItem].title +  "<br />";
-                div.innerHTML = div.innerHTML + 'cuePointsReceived startTime ' +  _cuepoints[item][innerItem].startTime +  "<br />";
-                div.innerHTML = div.innerHTML + 'cuePointsReceived endTime ' +  _cuepoints[item][innerItem].endTime +  "<br />";
-                div.innerHTML = div.innerHTML + 'cuePointsReceived duration ' +  _cuepoints[item][innerItem].duration +  "<br />";
+    kdp.kBind('cuePointsReceived', function ( cuePoints, id ) {
+        cuepoints = cuePoints;
+        for (item in cuepoints) {
+                //div.innerHTML = div.innerHTML + 'updatedAt ' +  cuepoints[item][innerItem].updatedAt +  "<br />";
+                //div.innerHTML = div.innerHTML + 'cuePointType ' +  cuepoints[item][innerItem].cuePointType +  "<br />";
+                div.innerHTML = div.innerHTML + 'cuePointsReceived title ' +  cuepoints[item].title +  "<br />";
+                div.innerHTML = div.innerHTML + 'cuePointsReceived startTime ' +  cuepoints[item].startTime +  "<br />";
+                div.innerHTML = div.innerHTML + 'cuePointsReceived endTime ' +  cuepoints[item].endTime +  "<br />";
+                div.innerHTML = div.innerHTML + 'cuePointsReceived duration ' +  cuepoints[item].duration +  "<br />";
                 div.innerHTML = div.innerHTML + '------------------------------- '  +  "<br />";
 
-            }
         }
     });
 
@@ -44,16 +32,15 @@ function bindKdpToEvenets(kdp, div)
         var roundTime = Math.round(timeMiliSec);
         var item, innerItem;
 
-        for (item in _cuepoints) {
-            for (innerItem in  _cuepoints[item]) {
-				var start_time = _cuepoints[item][innerItem].startTime;
-                var end_time = _cuepoints[item][innerItem].endTime;
+        for (item in cuepoints) {
+				var start_time = cuepoints[item].startTime;
+                var end_time = cuepoints[item].endTime;
 				//div.innerHTML = div.innerHTML + "xxx " + roundTime + "/" +  end_time +  "<br />";
 
 				if (Math.abs(roundTime - end_time) <= 30) {
-                    div.innerHTML = div.innerHTML + 'CuePointEnded = ' + _cuepoints[item][innerItem].title + " - " + roundTime + "/" + end_time  +  "<br />";
+                    div.innerHTML = div.innerHTML + 'CuePointEnded = ' + cuepoints[item].title + " - " + roundTime + "/" + end_time  +  "<br />";
                     this.sendNotification("doPause");
-					var src = _cuepoints[item][innerItem].sourceUrl;
+					var src = cuepoints[item].sourceUrl;
                     
                     var img = $("<img  src=" + src + " id=step_img" + " style='position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: 10000000000; cursor: pointer; display: inline-block; '>")
 						.on('click', function(e){
@@ -64,7 +51,6 @@ function bindKdpToEvenets(kdp, div)
                     break;
                 }
             }
-        }
 
 
 
