@@ -1,11 +1,29 @@
 <html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="layout.css">
     <!-- global scope -->
     <script>
         var kdp = null;
         var seekToStart = 0;
         var seekToEnd = 0;
+        var currentSpeed = 1;
+        function nextSpeed(up)
+        {
+            if (up)
+            {
+                if (currentSpeed >= 16)
+                    return 16;
+                return currentSpeed * 2;
+            }
+            else
+            {
+                if (currentSpeed <= 0.125)
+                    return 0.125;
+                return currentSpeed / 2;
+            }
+
+        }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
@@ -21,6 +39,25 @@
 
 <script src="http://cdnapi.kaltura.com/p/2233551/sp/223355100/embedIframeJs/uiconf_id/37797122/partner_id/2233551"></script>
 <div id="kaltura_player_1483277931" style="width: 560px; height: 395px;"></div>
+<div id="table-wrapper" >
+    <div id="table-scroll">
+        <table>
+            <tr>
+                <th><span class="text">Chapter Title</span></th>
+            </tr>
+            <tbody>
+                <tr> <td>1, 0</td></tr>
+                <tr> <td>1, 0</td></tr>
+                <tr> <td>1, 0</td></tr>
+                <tr> <td>1, 0</td></tr>
+                <tr> <td>1, 0</td></tr>
+                <tr> <td>1, 0</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<button onclick="faster()">Faster</button>
+<button onclick="slowDown()">Slower</button>
 <div id="voiceDiv"></div>
 <div id="log"></div>
 

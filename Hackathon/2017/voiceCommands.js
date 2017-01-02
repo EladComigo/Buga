@@ -29,7 +29,35 @@ if (annyang) {
         kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
         kdp.sendNotification("doPlay");
     }
+    function repeatSlowMotion()
+    {
+        setVoiceDivText("repeatSlowMotion");
+        currentSpeed = nextSpeed(false);
+        kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+        kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
+        kdp.sendNotification("doPlay");
+    }
+    function repeatFast()
+    {
+        setVoiceDivText("repeatFast");
+        currentSpeed = nextSpeed(true);
+        kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+        kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
+        kdp.sendNotification("doPlay");
+    }
+    function slowDown()
+    {
+        setVoiceDivText("slow down");
+        currentSpeed = nextSpeed(false);
+        kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+    }
 
+    function faster()
+    {
+        setVoiceDivText("faster");
+        currentSpeed = nextSpeed(true);
+        kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+    }
 
     var commands = {
         /** play commands **/
@@ -49,7 +77,12 @@ if (annyang) {
         'go to start': stopTheVideo,
         'back to top': stopTheVideo,
         /** repeat **/
-        'repeat': repeatLastSection
+        //'repeat': repeatLastSection,
+        'did not get that': repeatLastSection,
+        /** repeat slow motion **/
+        'repeat slow motion': repeatSlowMotion,
+        'repeat fast': repeatFast,
+
     };
 
     // Add our commands to annyang

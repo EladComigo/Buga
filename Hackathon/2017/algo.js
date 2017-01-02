@@ -34,7 +34,7 @@ function bindKdpToEvenets(kdp, div)
 
     });
 
-    kdp.kBind('playerUpdatePlayhead', function( currentTime ){
+    kdp.kBind('playerUpdatePlayhead1', function( currentTime ){
         var timeMiliSec  = currentTime * 1000;
         var roundTime = Math.round(timeMiliSec);
         var item, innerItem;
