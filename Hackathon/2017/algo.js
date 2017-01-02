@@ -53,31 +53,13 @@ function bindKdpToEvenets(kdp, div)
 				if (Math.abs(roundTime - end_time) <= 30) {
                     div.innerHTML = div.innerHTML + 'CuePointEnded = ' + _cuepoints[item][innerItem].title + " - " + roundTime + "/" + end_time  +  "<br />";
                     this.sendNotification("doPause");
-					//div.innerHTML = div.innerHTML + 'Starting  = ' + _cuepoints[item][innerItem].title  +  "<br />";
-					var src;
-					switch (_cuepoints[item][innerItem].title){
-						case "Step1":
-							src = 'images/video.png';
-							break;
-						case "Step2":
-							src = 'images/video.png';
-							break;
-						case "Step3":
-							src = 'images/video.png';
-							break;
-						case "Step4":
-							src = 'images/video.png';
-							break;
-						case "Step5":
-							src = 'images/video.png';
-							break;
-					}
-					var img = $("<img  src=" + src +  " id=step_img" + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
+					var src = _cuepoints[item][innerItem].sourceUrl;
+                    
+                    var img = $("<img  src=" + src +  " id=step_img" + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
 						.on('click', function(e){
 							$(this).remove();
 							kdp.sendNotification("doPlay");
 						});
-
 					$(this).append(img);
                     break;
                 }
