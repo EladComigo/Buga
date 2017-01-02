@@ -76,7 +76,7 @@ if (annyang) {
         kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
     }
 
-    function dontStop()
+    function dontStopPlayback()
     {
         setVoiceDivText("dontStop");
         dontStop = true;
@@ -105,8 +105,10 @@ if (annyang) {
         /** repeat slow motion **/
         'repeat slow motion': repeatSlowMotion,
         'repeat fast': repeatFast,
-        'dont stop': dontStop
-
+        'don\'t stop': dontStopPlayback,
+        /** speed **/
+        'faster': faster,
+        'slower': slowDown,
     };
 
     // Add our commands to annyang

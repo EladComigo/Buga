@@ -6,6 +6,16 @@ function chapterSeek(seekStartTime)
 
 }
 
+function initializeValues()
+{
+    dontStop = false;
+    seekToStart = 0;
+    seekToEnd = 0;
+    currentSpeed = 1;
+    seekViaChapter = false;
+    kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+}
+
 function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
 {
 
@@ -35,12 +45,12 @@ function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
         if (seekViaChapter || dontStop)
             return;
         var timeMiliSec  = currentTime * 1000;
-
+        var roundedTime = Math.round(timeMiliSec);
         for (var cuePoint in cuepoints) {
             var end_time = cuepoints[cuePoint].endTime;
 
-            if (Math.abs(timeMiliSec - end_time) <= 30) {
-                logDiv.innerHTML = logDiv.innerHTML + 'CuePointEnded = ' + cuepoints[cuePoint].title + " - " + timeMiliSec + "/" + end_time  +  "<br />";
+            if (Math.abs(roundedTime - end_time) <= 30) {
+                logDiv.innerHTML = logDiv.innerHTML + 'CuePointEnded = ' + cuepoints[cuePoint].title + " - " + roundedTime + "/" + end_time  +  "<br />";
                 kdp.sendNotification("doPause");
                 var src = cuepoints[cuePoint].sourceUrl;
 
@@ -56,13 +66,16 @@ function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
         //div.innerHTML = div.innerHTML + 'playerUpdatePlayhead ' + roundTime  +  "<br />";
     });
 
-    kdp.kBind('KalturaSupport_ThumbCuePointsUpdated', function(e, cuepoints) {
-        //div.innerHTML = div.innerHTML + 'KalturaSupport_ThumbCuePointsUpdated ' + cuepoints  +  "<br />";
+    kdp.kBind('ended', function () {
+        logDiv.innerHTML = logDiv.innerHTML + 'ended' +  "<br />";
+        initializeValues();
     });
 
-    kdp.kBind("freezeTimeIndicators", function(e, val){
-        //div.innerHTML = div.innerHTML + 'freezeTimeIndicators ' + val  +  "<br />";
+    kdp.kBind('replay', function () {
+        logDiv.innerHTML = logDiv.innerHTML + 'replay' +  "<br />";
+        initializeValues();
     });
+
 
     kdp.kBind('seeked', function () {
         logDiv.innerHTML = logDiv.innerHTML + 'seeked' +  "<br />";
