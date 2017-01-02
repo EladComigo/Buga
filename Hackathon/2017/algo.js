@@ -54,7 +54,7 @@ function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
                 kdp.sendNotification("doPause");
                 var src = cuepoints[cuePoint].sourceUrl;
 
-                var img = $("<img  src=" + src + " id=step_img" + " style='position: absolute; top: 0; left: 0; width: 100%; height:100%; z-index: 10000000000; cursor: pointer; display: inline-block; '>")
+                var img = $("<img  src=" + src + " id=step_img class=pauseImage>")
                     .on('click', function(e){
                         $(this).remove();
                         kdp.sendNotification("doPlay");

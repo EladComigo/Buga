@@ -1,18 +1,26 @@
 <!-- voice commands using the annyang library -->
-
-function removeStepImg() {
-    var img = document.getElementById('step_img');
-    if (img !== null) {
-        img.parentNode.removeChild(img);
-    }
-}
-
 if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
 
+
+    function removeStepImg() {
+        var img = document.getElementById('step_img');
+        if (img !== null) {
+            img.parentNode.removeChild(img);
+        }
+    }
+
+    function removeStepImgAndPlay(shouldPlay) {
+        var img = document.getElementById('step_img');
+        if (img !== null) {
+            img.parentNode.removeChild(img);
+        }
+        kdp.sendNotification("doPlay");
+    }
+
     function setVoiceDivText(text)
     {
-        document.getElementById('voiceDiv').innerText=text;
+        document.getElementById('voiceDiv').innerHTML=text;
     }
 
     function playTheVideo()
@@ -109,6 +117,7 @@ if (annyang) {
         /** speed **/
         'faster': faster,
         'slower': slowDown,
+        'resume': removeStepImgAndPlay
     };
 
     // Add our commands to annyang
