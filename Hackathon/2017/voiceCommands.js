@@ -1,16 +1,16 @@
 <!-- voice commands using the annyang library -->
+
+function removeStepImg() {
+    var img = document.getElementById('step_img');
+    if (img !== null) {
+        img.parentNode.removeChild(img);
+    }
+}
+
 if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
 
-
-    function removeStepImg() {
-        var img = document.getElementById('step_img');
-        if (img !== null) {
-            img.parentNode.removeChild(img);
-        }
-    }
-
-    function removeStepImgAndPlay(shouldPlay) {
+    function removeStepImgAndPlay() {
         var img = document.getElementById('step_img');
         if (img !== null) {
             img.parentNode.removeChild(img);
