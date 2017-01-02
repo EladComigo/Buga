@@ -1,5 +1,12 @@
 <!-- voice commands using the annyang library -->
 
+function removeStepImg() {
+    var img = document.getElementById('step_img');
+    if (img !== null) {
+        img.parentNode.removeChild(img);
+    }
+}
+
 if (annyang) {
     // Let's define our first command. First the text we expect, and then the function it should call
 
@@ -10,21 +17,26 @@ if (annyang) {
 
     function playTheVideo()
     {
+        removeStepImg();
         setVoiceDivText("play");
         kdp.sendNotification("doPlay");
+
     }
     function pauseTheVideo()
     {
+        removeStepImg();
         setVoiceDivText("pause");
         kdp.sendNotification("doPause");
     }
     function stopTheVideo()
     {
+        removeStepImg();
         setVoiceDivText("stop");
         kdp.sendNotification("doStop");
     }
     function repeatLastSection()
     {
+        removeStepImg();
         setVoiceDivText("repeat");
         kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
         kdp.sendNotification("doPlay");

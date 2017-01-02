@@ -72,7 +72,7 @@ function bindKdpToEvenets(kdp, div)
 							src = 'images/video.png';
 							break;
 					}
-					var img = $("<img src=" + src + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
+					var img = $("<img  src=" + src +  " id=step_img" + " style='position: absolute; top: 0; left: 0; cursor: pointer;'>")
 						.on('click', function(e){
 							$(this).remove();
 							kdp.sendNotification("doPlay");
