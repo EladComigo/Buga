@@ -13,11 +13,12 @@ function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
         cuepoints = cuePoints;
         for (var cuePoint in cuepoints)
         {
-            logDiv.innerHTML = logDiv.innerHTML + 'cuePointsReceived title ' +  cuepoints[cuePoint].title +  "<br />";
+          /*  logDiv.innerHTML = logDiv.innerHTML + 'cuePointsReceived title ' +  cuepoints[cuePoint].title +  "<br />";
             logDiv.innerHTML = logDiv.innerHTML + 'cuePointsReceived startTime ' +  cuepoints[cuePoint].startTime +  "<br />";
             logDiv.innerHTML = logDiv.innerHTML + 'cuePointsReceived endTime ' +  cuepoints[cuePoint].endTime +  "<br />";
             logDiv.innerHTML = logDiv.innerHTML + 'cuePointsReceived duration ' +  cuepoints[cuePoint].duration +  "<br />";
             logDiv.innerHTML = logDiv.innerHTML + '------------------------------- '  +  "<br />";
+            */
             chaptersDiv.innerHTML = chaptersDiv.innerHTML + "<li onclick=\"chapterSeek(" + cuepoints[cuePoint].startTime + ")\">" + cuepoints[cuePoint].title  + "</li>"
         }
     });
@@ -26,12 +27,12 @@ function bindKdpToEvenets(kdp, chaptersDiv, logDiv)
         seekToStart = cuePoint.cuePoint.startTime;
         seekToEnd = cuePoint.cuePoint.endTime;
 
-        logDiv.innerHTML = logDiv.innerHTML + 'adOpportunity start time '  +  cuePoint.cuePoint.startTime +   "<br />";
-        logDiv.innerHTML = logDiv.innerHTML + 'adOpportunity end time '    + cuePoint.cuePoint.endTime +   "<br />";
+       /* logDiv.innerHTML = logDiv.innerHTML + 'adOpportunity start time '  +  cuePoint.cuePoint.startTime +   "<br />";
+        logDiv.innerHTML = logDiv.innerHTML + 'adOpportunity end time '    + cuePoint.cuePoint.endTime +   "<br />"; */
     });
 
     kdp.kBind('playerUpdatePlayhead', function( currentTime ){
-        if (seekViaChapter)
+        if (seekViaChapter || dontStop)
             return;
         var timeMiliSec  = currentTime * 1000;
 

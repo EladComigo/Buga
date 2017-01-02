@@ -24,18 +24,21 @@ if (annyang) {
     }
     function pauseTheVideo()
     {
+        dontStop = false;
         removeStepImg();
         setVoiceDivText("pause");
         kdp.sendNotification("doPause");
     }
     function stopTheVideo()
     {
+        dontStop = false;
         removeStepImg();
         setVoiceDivText("stop");
         kdp.sendNotification("doStop");
     }
     function repeatLastSection()
     {
+        dontStop = false;
         removeStepImg();
         setVoiceDivText("repeat");
         kdp.sendNotification("doSeek", Math.round(seekToStart/1000));
@@ -43,6 +46,7 @@ if (annyang) {
     }
     function repeatSlowMotion()
     {
+        dontStop = false;
         setVoiceDivText("repeatSlowMotion");
         currentSpeed = nextSpeed(false);
         kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
@@ -51,6 +55,7 @@ if (annyang) {
     }
     function repeatFast()
     {
+        dontStop = false;
         setVoiceDivText("repeatFast");
         currentSpeed = nextSpeed(true);
         kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
@@ -69,6 +74,12 @@ if (annyang) {
         setVoiceDivText("faster");
         currentSpeed = nextSpeed(true);
         kdp.sendNotification("playbackRateChangeSpeed", currentSpeed);
+    }
+
+    function dontStop()
+    {
+        setVoiceDivText("dontStop");
+        dontStop = true;
     }
 
     var commands = {
@@ -94,6 +105,7 @@ if (annyang) {
         /** repeat slow motion **/
         'repeat slow motion': repeatSlowMotion,
         'repeat fast': repeatFast,
+        'dont stop': dontStop
 
     };
 
