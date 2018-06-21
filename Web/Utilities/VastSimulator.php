@@ -4,7 +4,7 @@ $headers = apache_request_headers();
 $userAgent = "Web";
 
 foreach ($headers as $header => $value) {
-            if ($header == 'User-Agent')
+            if ($header == 'User-Agent' && true)
                             $userAgent = $value;
 }
 
